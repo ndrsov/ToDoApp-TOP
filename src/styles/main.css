@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #db4c3f;
+  --primary-hover: #c53727;
+  --secondary-color: #25273c;
+  --bg-color: #ffffff;
+  --sidebar-bg: #f9f9f9;
+  --text-color: #202020;
+  --text-secondary: #6b6b6b;
+  --border-color: #e5e5e5;
+  --todo-hover: #f5f5f5;
+  --low-priority: #4caf50;
+  --medium-priority: #ff9800;
+  --high-priority: #f44336;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
