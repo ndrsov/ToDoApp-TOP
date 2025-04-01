@@ -36,6 +36,6 @@ export function hideModal(modalid) {
 }
 
 // Generate unieu ID
-export function generteId() {
+export function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
