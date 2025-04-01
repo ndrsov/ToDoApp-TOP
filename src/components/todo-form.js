@@ -1,4 +1,5 @@
-import { showModal, hideModal, formatDateForInput } from '../utils/dom-utils';
+import { showModal, hideModal } from '../utils/dom-utils';
+import { formatDateForInput } from '../utils/date-utils';
 
 export default class TodoForm {
   constructor(app) {
