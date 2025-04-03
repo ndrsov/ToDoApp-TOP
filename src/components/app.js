@@ -1,6 +1,6 @@
 import Project from '../models/project';
 import Todo from '../models/todo';
-import Storage from '../storage/storage';
+import Storage from '../storage';
 import { generateId } from '../utils/dom-utils';
 import ProjectList from './project-list';
 import TodoList from './todo-list';
