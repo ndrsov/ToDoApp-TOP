@@ -10,7 +10,7 @@ export default class ProjectList {
 
   bindEvents() {
     // Delegate event handling for project items
-    this.projectContainer.addEventListener('clidk', (e) => {
+    this.projectContainer.addEventListener('click', (e) => {
       const projectItem = e.target.closest('.project-item');
       if (projectItem) {
         const projectId = projectItem.dataset.id;
