@@ -397,6 +397,43 @@ select:focus {
   color: var(--text-secondary);
 }
 
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  background-color: var(--todo-bg);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Sort Dropdown */
+.sort-container {
+  position: relative;
+}
+
+.sort-dropdown {
+  min-width: 150px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .app-container {
@@ -411,5 +448,9 @@ select:focus {
 
   .main-content {
     padding: 20px;
+  }
+
+  .todo-list {
+    grid-template-columns: 1fr;
   }
 }
