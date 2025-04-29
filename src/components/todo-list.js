@@ -5,7 +5,51 @@ export default class TodoList {
   constructor(app) {
     this.app = app;
     this.container = document.getElementById('todo-list');
+    this.setOrder = 'date';
     this.bindEvents();
+    this.addSortingControls();
+  }
+
+  addSortingControls() {
+    // Create a sort dropdown control
+    const sortContainer = createElement('div', {
+      className: 'sort-container',
+    });
+
+    const sortDropdown = createElement('select', {
+      className: 'sort-dropdown',
+      id: 'sort-dropdown',
+    });
+
+    const options = [
+      { value: 'date', text: 'Sort by Date' },
+      { value: 'priority', text: 'Sort by Priority' },
+      { value: 'title', text: 'Sort by Title' },
+    ];
+
+    options.forEach((option) => {
+      const optionEl = createElement(
+        'option',
+        {
+          value: option.value,
+        },
+        option.text
+      );
+
+      sortDropdown.appendChild(optionEl);
+    });
+
+    sortContainer.appendChild(sortDropdown);
+
+    // Add event listener for sort change
+    sortDropdown.addEventListener('change', (e) => {
+      this.sortOrder = e.target.value;
+      this.render();
+    });
+
+    // Find the todo-actions div and append the sort container
+    const todoActions = document.querySelector('.todo-actions');
+    todoActions.appendChild(sortContainer);
   }
 
   bindEvents() {
