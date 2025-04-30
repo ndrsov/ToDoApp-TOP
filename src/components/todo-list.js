@@ -12,11 +12,11 @@ export default class TodoList {
 
   addSortingControls() {
     // Create a sort dropdown control
-    const sortContainer = createElement('div', {
+    const sortContainer = createEl('div', {
       className: 'sort-container',
     });
 
-    const sortDropdown = createElement('select', {
+    const sortDropdown = createEl('select', {
       className: 'sort-dropdown',
       id: 'sort-dropdown',
     });
@@ -28,7 +28,7 @@ export default class TodoList {
     ];
 
     options.forEach((option) => {
-      const optionEl = createElement(
+      const optionEl = createEl(
         'option',
         {
           value: option.value,
