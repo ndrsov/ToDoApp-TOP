@@ -85,6 +85,31 @@ export default class TodoList {
     });
   }
 
+  sortTodos(todos) {
+    return [...todos].sort((a, b) => {
+      switch (this.sortOrder) {
+        case 'date':
+          // Sort by due date (null dates at the end)
+          if (!a.dueDate && !b.dueDate) return 0;
+          if (!a.dueDate) return 1;
+          if (!b.dueDate) return -1;
+          return new Date(a.dueDate) - new Date(b.dueDate);
+
+        case 'priority':
+          // Sort by priority (high > medium > low)
+          const priorityValues = { high: 3, medium: 2, low: 1 };
+          return priorityValues[b.priority] - priorityValues[a.priority];
+
+        case 'title':
+          // Sort alphabetically by title
+          return a.title.localeCompare(b.title);
+
+        default:
+          return 0;
+      }
+    });
+  }
+
   render() {
     clearEl(this.container);
 
