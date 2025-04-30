@@ -113,7 +113,10 @@ export default class TodoList {
   render() {
     clearEl(this.container);
 
-    const todos = this.app.getTodosByProject(this.app.activeProject);
+    let todos = this.app.getTodosByProject(this.app.activeProject);
+
+    // Sort todos based on current sort order
+    todos = this.sortTodos(todos);
 
     if (todos.length === 0) {
       const emptyState = createEl('div', {
@@ -142,6 +145,11 @@ export default class TodoList {
         'data-id': todo.id,
       });
 
+      // Todo header with checkbox and title
+      const todoHeader = createEl('div', {
+        className: 'todo-header',
+      });
+
       // Checkbox
       const checkbox = createEl('input', {
         type: 'checkbox',
@@ -149,9 +157,9 @@ export default class TodoList {
         checked: todo.completed,
       });
 
-      // Todo information
-      const todoInfo = createEl('div', {
-        className: 'todo-info',
+      // Title container
+      const todoTitleContainer = createEl('div', {
+        className: 'todo-title-container',
       });
 
       const todoTitle = createEl(
@@ -162,6 +170,17 @@ export default class TodoList {
         todo.title
       );
 
+      todoTitleContainer.appendChild(todoTitle);
+
+      todoHeader.appendChild(checkbox);
+      todoHeader.appendChild(todoTitleContainer);
+
+      // Todo content section
+      const todoContent = createEl('div', {
+        className: 'todo-content',
+      });
+
+      // Description
       if (todo.description) {
         const todoDescription = createEl(
           'div',
@@ -170,7 +189,7 @@ export default class TodoList {
           },
           todo.description
         );
-        todoInfo.appendChild(todoDescription);
+        todoContent.appendChild(todoDescription);
       }
 
       // Todo metadata
@@ -197,6 +216,13 @@ export default class TodoList {
         todoMeta.appendChild(todoDueDate);
       }
 
+      todoContent.appendChild(todoMeta);
+
+      // Todo footer with priority and actions
+      const todoFooter = createEl('div', {
+        className: 'todo-footer',
+      });
+
       const todoPriority = createEl(
         'div',
         {
@@ -205,17 +231,12 @@ export default class TodoList {
         todo.priority.charAt(0).toUpperCase() + todo.priority.slice(1)
       );
 
-      todoMeta.appendChild(todoPriority);
-      todoInfo.appendChild(todoTitle);
-      todoInfo.appendChild(todoMeta);
-
-      // Todo actions
       const todoActions = createEl('div', {
-        className: 'todo-actions',
+        className: 'todo-actions-btns',
       });
 
       const editButton = createEl('button', {
-        className: 'btn secondary-btn todo-edit-btn',
+        className: 'btn secondary-btn icon-only todo-edit-btn',
         'aria-label': 'Edit task',
       });
 
@@ -226,7 +247,7 @@ export default class TodoList {
       editButton.appendChild(editIcon);
 
       const deleteButton = createEl('button', {
-        className: 'btn danger-btn todo-delete-btn',
+        className: 'btn danger-btn icon-only todo-delete-btn',
         'aria-label': 'Delete task',
       });
 
@@ -239,10 +260,13 @@ export default class TodoList {
       todoActions.appendChild(editButton);
       todoActions.appendChild(deleteButton);
 
+      todoFooter.appendChild(todoPriority);
+      todoFooter.appendChild(todoActions);
+
       // Assemble todo item
-      todoItem.appendChild(checkbox);
-      todoItem.appendChild(todoInfo);
-      todoItem.appendChild(todoActions);
+      todoItem.appendChild(todoHeader);
+      todoItem.appendChild(todoContent);
+      todoItem.appendChild(todoFooter);
 
       this.container.appendChild(todoItem);
     });
