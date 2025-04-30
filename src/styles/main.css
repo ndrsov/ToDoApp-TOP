@@ -47,6 +47,11 @@ body {
   font-weight: 700;
 }
 
+.app-title img {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
 .projects-header {
   display: flex;
   justify-content: space-between;
