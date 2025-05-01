@@ -408,6 +408,14 @@ select:focus {
   opacity: 0.7;
 }
 
+.todo-item.completed .todo-priority {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-secondary);
+}
+
+.todo-item.completed .todo-actions-btns {
+  opacity: 0.5;
+}
 /* Empty State */
 .empty-state {
   grid-column: 1 / -1;
