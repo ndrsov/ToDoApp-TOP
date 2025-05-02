@@ -152,15 +152,47 @@ body {
 
 .todo-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   padding: 15px;
   border-bottom: 1px solid var(--border-color);
 }
 
 .todo-checkbox {
-  margin-right: 12px;
-  margin-top: 5px;
-  transform: scale(1.2);
+  margin-right: 15px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+
+  width: 15px;
+  height: 14px;
+
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+
+  transition: background-color 0.05s linear, border-color 0.05s linear;
+}
+
+.todo-checkbox[checked='true'] {
+  background-color: #148c98;
+  border-color: var(--secondary-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M1 4l3 3 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 12px 12px;
+}
+
+.todo-checkbox:focus {
+  outline: 2px solid var(--primary-hover);
+  outline-offset: 1px;
 }
 
 .todo-title-container {
