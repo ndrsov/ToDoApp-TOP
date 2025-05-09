@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp | A simple ToDo app</title>
+    <link rel="shortcut icon" href="abdb8f30f4af0c816755.ico" type="image/x-icon" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="icon" href="favicon.ico"><script defer src="main.js"></script></head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1 class="app-title">
+            <img
+              src="dff0d1a479c3d2070ef7.svg"
+              alt="TodoApp logo"
+              width="24"
+              height="24"
+            />
+            TodoApp
+          </h1>
+        </div>
+        <div class="projects-section">
+          <div class="projects-header">
+            <h2>Projects</h2>
+            <button
+              id="new-project-btn"
+              class="icon-btn"
+              aria-label="Create new project"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div id="projects-list" class="projects-list">
+            <!-- Projects will be inserted here -->
+          </div>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="main-header">
+          <h2 id="current-project-title">Default Project</h2>
+          <div class="project-actions">
+            <button
+              id="edit-project-btn"
+              class="btn secondary-btn"
+              aria-label="Edit project"
+            >
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button
+              id="delete-project-btn"
+              class="btn danger-btn"
+              aria-label="Delete project"
+            >
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </div>
+        </header>
+        <div class="todo-actions">
+          <button id="new-todo-btn" class="btn primary-btn">
+            <i class="fas fa-plus"></i> New Task
+          </button>
+        </div>
+        <div id="todo-list" class="todo-list">
+          <!-- Todos will be inserted here -->
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for creating/editing todos -->
+    <div id="todo-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="todo-modal-title">New Task</h2>
+          <button id="close-todo-modal" class="close-btn">&times;</button>
+        </div>
+        <form id="todo-form">
+          <div class="form-group">
+            <label for="todo-title">Title</label>
+            <input type="text" id="todo-title" name="title" required />
+          </div>
+          <div class="form-group">
+            <label for="todo-description">Description</label>
+            <textarea
+              id="todo-description"
+              name="description"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="todo-due-date">Due Date</label>
+            <input type="date" id="todo-due-date" name="dueDate" />
+          </div>
+          <div class="form-group">
+            <label for="todo-priority">Priority</label>
+            <select id="todo-priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button
+              type="button"
+              id="cancel-todo-btn"
+              class="btn secondary-btn"
+            >
+              Cancel
+            </button>
+            <button type="submit" id="save-todo-btn" class="btn primary-btn">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for creating/editing projects -->
+    <div id="project-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="project-modal-title">New Project</h2>
+          <button id="close-project-modal" class="close-btn">&times;</button>
+        </div>
+        <form id="project-form">
+          <div class="form-group">
+            <label for="project-name">Name</label>
+            <input type="text" id="project-name" name="name" required />
+          </div>
+          <div class="form-actions">
+            <button
+              type="button"
+              id="cancel-project-btn"
+              class="btn secondary-btn"
+            >
+              Cancel
+            </button>
+            <button type="submit" id="save-project-btn" class="btn primary-btn">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
